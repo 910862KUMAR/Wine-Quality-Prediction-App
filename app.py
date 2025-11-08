@@ -19,18 +19,21 @@ st.markdown("""
             color: white;
             font-family: 'Poppins', sans-serif;
         }
+
         /* Title */
         h1, h2, h3 {
             color: #F9F9F9;
             text-align: center;
             font-weight: 700;
         }
+
         /* Subtitle text */
         .subtitle {
             text-align: center;
             color: #EAEAEA;
             font-size: 18px;
         }
+
         /* Button Styling */
         .stButton>button {
             background-color: #D91656;
@@ -48,12 +51,23 @@ st.markdown("""
             color: black;
             transform: scale(1.02);
         }
+
         /* Input field style */
         .stNumberInput>div>div>input {
             border-radius: 10px;
             padding: 10px;
             font-size: 16px;
         }
+
+        /* Center image + rounded corners */
+        .center-img {
+            display: flex;
+            justify-content: center;
+        }
+        img {
+            border-radius: 20px;
+        }
+
         /* Footer */
         footer {
             text-align: center;
@@ -68,10 +82,12 @@ st.markdown("""
 st.title("🍇 AI Wine Quality Prediction App")
 st.markdown("<p class='subtitle'>Predict wine quality using Machine Learning and real chemical data 🍷</p>", unsafe_allow_html=True)
 
-# --- Optional Banner Image ---
+# --- Banner Image (small & centered) ---
 try:
-    image = Image.open("/content/Wine Quality .jpg")
-    st.image(image, use_container_width=True)
+    image = Image.open("wine.jpg")  # ensure your repo contains this image
+    st.markdown("<div class='center-img'>", unsafe_allow_html=True)
+    st.image(image, width=400)
+    st.markdown("</div>", unsafe_allow_html=True)
 except:
     st.info("📸 Add a 'wine.jpg' banner to enhance your app visuals.")
 
@@ -99,7 +115,7 @@ with col2:
     sulphates = st.number_input("Sulphates", 0.3, 2.0, 0.56)
     alcohol = st.number_input("Alcohol", 8.0, 15.0, 9.4)
 
-# --- Prediction Button ---
+# --- Predict Button ---
 if st.button("🔍 Predict Wine Quality"):
     input_data = np.array([[fixed_acidity, volatile_acidity, citric_acid, residual_sugar, chlorides,
                             free_sulfur_dioxide, total_sulfur_dioxide, density, pH, sulphates, alcohol]])
