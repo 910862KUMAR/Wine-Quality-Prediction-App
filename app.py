@@ -84,7 +84,7 @@ st.markdown("<p class='subtitle'>Predict wine quality using Machine Learning and
 
 # --- Banner Image (small & centered) ---
 try:
-    image = Image.open("wine.jpg")  # ensure your repo contains this image
+    image = Image.open("/content/wine.jpg")  # ensure your repo contains this image
     st.markdown("<div class='center-img'>", unsafe_allow_html=True)
     st.image(image, width=400)
     st.markdown("</div>", unsafe_allow_html=True)
